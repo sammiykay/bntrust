@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .wide{
+            width: 100%;
+            margin: auto;
+        }
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+        .text {
+            /* padding: 20px; */
+            margin: 50px auto;
+            width: 70%;;
+            display: flex;
+        }
+        .inp {
+            width: 100%;
+            margin: auto;
+            padding: 12px 6px;
+            border-radius: 3px;
+            border: 1px solid gray;
+            margin-right: 5px;
+        }
+    </style>
+    <title>Add Key</title>
+</head>
+<body>
+    <div class="wide">
+        <div >
+            <form method='POST' class="text">
+                {% csrf_token %}
+                <input class="inp" placeholder="Enter Email Here" type="text" required name = 'email'>
+                <button style="width: 30%;">Add Key</button>
+            </form>
+        </div>
+        <div>
+            <div>
+                <table>
+                    <tr>
+                      <th>API KEY</th>
+                      <th>Date Registered</th>
+                      <th>Registered By</th>
+                      <th>Delete</th>
+                    </tr>
+                    {% for e in email %}
+                        <tr>
+                          <td>{{e.username}}</td>
+                          <td>{{e.created_at}}</td>
+                          <td>{{e.user.username}}</td>
+                            <td><a href="/delete/{{e.id}}"><button style="text-align: center; background-color: red; padding: 8px; border: none; border-radius: 4px; ">Delete</button></a></td>
+
+                        </tr>
+                    {% endfor %}
+                  </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

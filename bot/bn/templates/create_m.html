@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .wide{
+            width: 100%;
+            margin: auto;
+        }
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+        .text {
+            /* padding: 20px; */
+            margin: 50px auto;
+            width: 70%;;
+            display: flex;
+        }
+        .inp {
+            width: 100%;
+            margin: auto;
+            padding: 12px 6px;
+            border-radius: 3px;
+            border: 1px solid gray;
+            margin-right: 5px;
+        }
+    </style>
+    <title>Add Email</title>
+</head>
+<body>
+    <div class="wide">
+        <div >
+            {% if messages %}
+            {% for m in messages %}
+            <p style="text-align: center; color: green; margin: 4px 0px">{{m}}</p>
+            {% endfor %}
+            {% endif %}
+            <form method='POST' class="text">
+                {% csrf_token %}
+                <input class="inp" placeholder="Enter Email Here" type="email" required name = 'username'>
+                <button style="width: 30%;">Add Email</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

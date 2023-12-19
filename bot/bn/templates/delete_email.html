@@ -1,0 +1,10 @@
+<html>
+
+    <form method='POST'>
+        {% csrf_token %}
+        Are you sure you want to delete {{email.username}}
+        <input type='submit' value="Yes">
+        <a href="/create-email"><button>No</button></a>
+
+    </form>
+</html>
